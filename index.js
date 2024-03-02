@@ -6,11 +6,13 @@ for (var i = 0; i < len; i++) {
     [i].addEventListener("click", function () {
       let buttonChar = this.innerHTML;
       makeSound(buttonChar);
+      anime(buttonChar);
     });
 }
 // keyboard
 document.addEventListener("keypress", function (event) {
   makeSound(event.key);
+  anime(event.key);
 });
 
 // Sound making..
@@ -53,4 +55,14 @@ function makeSound(buttonChar) {
       console.log(buttonChar);
       break;
   }
+}
+
+// Animation...
+function anime(buttPre) {
+  let cls = document.querySelector("." + buttPre);
+
+  cls.classList.add("pressed");
+  setTimeout(function () {
+    cls.classList.remove("pressed");
+  }, 150);
 }
